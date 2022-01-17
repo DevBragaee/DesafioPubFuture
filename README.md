@@ -7,8 +7,8 @@ roda o comando  yarn install( para instalar as dependencias do projeto )
 rodar o comando  yarn dev
 será  usado o INSOMNIA para consumir:
 Apos instalar o insomnia e abri-lo
-ir em prefencias e na aba  "DaTA"  importar o arquivo "metodos.json" que estar na pasta "backup_Insomnia "
-Outra  forma alternativa: ao abrir o insomnia ir em "create" e escolher a opcao file e indicar o caminho da pasta "backup_isomnia"
+ir em prefencias e na aba  "DaTA"  importar o arquivo "metodos.json" que estar na pasta "Documentacao "
+Outra  forma alternativa: ao abrir o insomnia ir em "create" e escolher a opcao file e indicar o caminho da pasta "Documentacao"
 
 sobre a base de dados:
 pode ser visualizada com o BEEKEEPER-STUDIO
