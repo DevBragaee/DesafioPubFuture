@@ -12,30 +12,33 @@ interface IAccount {
   }
   
   class AccountService {
-      execute(arg0: { type_account_id: string; accountbalance: number; financialInstitution: string }) {
-         
-        throw new Error("Method not implemented.")
-      }
-     AccountRepository: Repository<Account>;
-      AccountRepositories: Account
-  
-    constructor() {
-      this.AccountRepositories = getCustomRepository(Account);
-    }
-        async create({  type_account_id,  accountbalance, financialInstitution  }: IAccount) {
-      const account = this.AccountRepositories.create({
-        type_account_id,
-
-        accountbalance,
-        financialInstitution,
-      });
      
-    
-    
-    await this.AccountRepository.save(account);
-        
-    return account;
+        async execute({  type_account_id,  accountbalance, financialInstitution  }: IAccount) {
+          const accountRepositories = getCustomRepository(AccountRepositories)
+          if (type_account_id == undefined || financialInstitution == undefined || accountbalance ==undefined ) {
+            throw new Error("dados invalidos para criacao de conta!")
         }
-   
+        const accountExists = await AccountRepositories.findOne(financialInstitution)
+
+        if (!financialInstitution) {
+            throw new Error("U Does Not Exists!")
+        }
+
+        const accountNameExists = await AccountRepositories.findOne(type_account_id)
+
+       
+        const account = AccountRepositories.create({
+            type_account_id,
+            accountbalance,
+            financialInstitution
+            
+        })
+
+       
+
+        return account
+
+    }
 }
-export  { AccountService }
+    
+      export  {AccountService}
