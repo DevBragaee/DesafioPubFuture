@@ -1,6 +1,6 @@
 import {MigrationInterface, QueryRunner,Table} from "typeorm";
 
-export class CreateAccount1642277290503 implements MigrationInterface {
+export class CreateAccount1642791206124 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
@@ -12,20 +12,21 @@ export class CreateAccount1642277290503 implements MigrationInterface {
                         type: "uuid",
                         isPrimary: true
                     },
+                    
                     {
                         name: "type_account_id",
                         type: "varchar"
                     },
                     {
                         name: "accountbalance",
-                        type: "number"
+                        type: "float",
+                        
                     },
                     {
-                       name:"financialInstitution",
-                       type:  "varchar"
+                        name: "financialInstitution",
+                        type: "varchar",
+                        
                     },
-
-                    
                     {
                         name: "created_at",
                         type: "timestamp",
@@ -36,21 +37,13 @@ export class CreateAccount1642277290503 implements MigrationInterface {
                         type: "timestamp",
                         default: "now()"
                     }
-                ],
-                foreignKeys: [
-                    {
-                      name: "FKtypeaccount",
-                      referencedTableName: "typeaccount",
-                      referencedColumnNames: ["id"],
-                      columnNames: ["type_account_id"],
-                      onDelete: "SET NULL",
-                      onUpdate: "SET NULL",
-                    },
-                  ],
+                ]
             })
         )
     }
+
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropTable("account")
     }
+
 }
